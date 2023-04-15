@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Analisar se a linguagem é imprópria</title>
+  </head>
+  <body>
+    <form onsubmit="analisarTexto(event)">
+      <label>
+        Escreva o texto:
+        <textarea id="texto" name="texto"></textarea>
+      </label>
+      <button type="submit">Enviar</button>
+    </form>
+    <script>
+      const linguagemImpropria = ['porra', 'cacete'];
+      function analisarLinguagemImpropria(texto) {
+        for (let i = 0; i < linguagemImpropria.length; i++) {
+          if (texto.includes(linguagemImpropria[i])) {
+            return true;
+          }
+        }
+        return false;
+      }
+      function analisarTexto(event) {
+        event.preventDefault();
+        const texto = document.getElementById('texto').value;
+        if (analisarLinguagemImpropria(texto)) {
+          alert('O texto contém linguagem imprópria.');
+        } else {
+          alert('O texto contém linguagem permitida.');
+        }
+      }
+    </script>
+  </body>
+</html>
